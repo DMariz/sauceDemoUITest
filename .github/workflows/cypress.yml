@@ -1,10 +1,27 @@
-name: Checkout
+name: Cypress Tests
 
-on: [push]
+on: push
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
+  install:
+    runs-on: ubuntu-lastest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          runTests: true
+
+      - name: Artifacts
+        uses: actions/upload-artifact@v4
+        # add the line below to store screenshots only on failures       
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
