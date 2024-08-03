@@ -29,9 +29,9 @@ describe('Login no Sauce Labs', () => {
 
   //Preencher os dados do Cliente e clicar em Continue
   it('informar dados do cliente', () => {
-    cy.get('[data-test="firstName"]').type('Bárbara');
-    cy.get('[data-test="lastName"]').type('Cabral');
-    cy.get('[data-test="postalCode"]').type('88106518');
+    cy.get('[data-test="firstName"]').type('Daniel');
+    cy.get('[data-test="lastName"]').type('Lócio');
+    cy.get('[data-test="postalCode"]').type('5200100');
     cy.get('[data-test="continue"]').click();
   })
 
